@@ -328,6 +328,85 @@ chmod +x dmct
 
 echo -e "${GREEN}✓${NC} Created launcher"
 
+# Create ghost mode launcher
+cat > ghost.sh << 'GHOST_EOF'
+#!/bin/bash
+# DMCT Ghost Mode - Anonymous Trust Network
+set -e
+
+DMCT_DIR="$HOME/.dmct"
+TOR_DIR="$DMCT_DIR/tor"
+
+# Colors
+PURPLE='\033[0;35m'
+CYAN='\033[0;36m'
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+NC='\033[0m'
+
+echo -e "${PURPLE}"
+cat << "EOF"
+   ▄████  ██░ ██  ▒█████    ██████ ▄▄▄█████▓
+  ██▒ ▀█▒▓██░ ██▒▒██▒  ██▒▒██    ▒ ▓  ██▒ ▓▒
+ ▒██░▄▄▄░▒██▀▀██░▒██░  ██▒░ ▓██▄   ▒ ▓██░ ▒░
+ ░▓█  ██▓░▓█ ░██ ▒██   ██░  ▒   ██▒░ ▓██▓ ░ 
+ ░▒▓███▀▒░▓█▒░██▓░ ████▓▒░▒██████▒▒  ▒██▒ ░ 
+  ░▒   ▒  ▒ ░░▒░▒░ ▒░▒░▒░ ▒ ▒▓▒ ▒ ░  ▒ ░░   
+   
+   M O D E   :   A C T I V A T I N G
+EOF
+echo -e "${NC}"
+
+# Check Tor
+if ! command -v tor &> /dev/null; then
+    echo -e "${CYAN}Installing Tor...${NC}"
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        brew install tor || { echo -e "${RED}Failed to install Tor${NC}"; exit 1; }
+    else
+        sudo apt-get install -y tor || { echo -e "${RED}Failed to install Tor${NC}"; exit 1; }
+    fi
+fi
+
+# Setup
+mkdir -p "$TOR_DIR/data" "$TOR_DIR/hidden_service"
+chmod 700 "$TOR_DIR/hidden_service"
+
+# Tor config
+cat > "$TOR_DIR/torrc" << TORRC_EOF
+DataDirectory $TOR_DIR/data
+HiddenServiceDir $TOR_DIR/hidden_service/
+HiddenServicePort 31415 127.0.0.1:31415
+SocksPort 9050
+ControlPort 9051
+TORRC_EOF
+
+# Start Tor
+echo -e "${CYAN}🧅 Starting hidden service...${NC}"
+tor -f "$TOR_DIR/torrc" &
+TOR_PID=$!
+
+# Wait for onion
+echo -e "${CYAN}⏳ Generating .onion address...${NC}"
+while [ ! -f "$TOR_DIR/hidden_service/hostname" ]; do sleep 1; done
+sleep 5
+
+ONION=$(cat "$TOR_DIR/hidden_service/hostname")
+echo -e "\n${GREEN}✅ Ghost mode active!${NC}"
+echo -e "${PURPLE}🧅 Your address: ${GREEN}$ONION${NC}\n"
+
+# Run DMCT
+echo -e "${CYAN}🌊 Starting anonymous trust network...${NC}\n"
+cd "$DMCT_DIR"
+torify python3 purist_node.py
+
+# Cleanup
+trap "kill $TOR_PID 2>/dev/null; echo -e '\n${PURPLE}Ghost mode deactivated.${NC}'" EXIT
+GHOST_EOF
+
+chmod +x ghost.sh
+
+echo -e "${GREEN}✓${NC} Created ghost mode launcher"
+
 # Add to PATH
 echo -e "\n${CYAN}Adding DMCT to PATH...${NC}"
 
