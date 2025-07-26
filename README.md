@@ -10,6 +10,8 @@
 
 DMCT reimagines trust as a fundamental force of nature. Instead of certificates, signatures, and authorities, trust propagates as waves through spacetime. Consensus emerges from constructive interference. Lies create destructive interference. No voting. No mining. Just physics.
 
+**Note:** This is a theoretical implementation exploring these concepts. See [DISCLAIMER.md](DISCLAIMER.md) for important information.
+
 **Core Features:**
 - ♾️ **Infinitely Scalable** - Works identically for 10 or 10 billion nodes
 - 🔐 **Quantum-Resistant** - Uses spacetime mechanics, not cryptography  
