@@ -145,6 +145,7 @@ Instead:
 - **Causal Ordering** - Can't fake the past due to light cones
 - **Wave Mechanics** - Can't fake constructive interference
 - **Natural Selection** - Dishonest nodes create destructive patterns
+- **Dark Group Resistance** - Harmful networks self-isolate through physics - [Learn more](DARK_GROUPS.md)
 
 ## 🌍 Use Cases
 
@@ -231,6 +232,7 @@ wave = node.emit_superposition([option1, option2, option3])
 
 - [Protocol Specification](PROTOCOL.md)
 - [Byzantine Generals Solution](BYZANTINE.md)
+- [Dark Group Resistance](DARK_GROUPS.md)
 - [Ghost Mode Guide](GHOST_CHAT.md)
 - [Attack Analysis](attack_demo.py)
 - [VM Testing](VM_TESTING.md)
