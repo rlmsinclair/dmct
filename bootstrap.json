@@ -1,12 +1,12 @@
 {
   "genesis_nodes": [
     {
-      "comment": "Add your .onion address here after setting up Tor hidden service",
-      "address": "YOUR_ONION_ADDRESS.onion:31415",
-      "frequency": 0.42,
-      "established": "2024-01-26"
+      "comment": "No centralized bootstrap. Peers shared through trust, not code.",
+      "address": "Find peers through secure channels",
+      "note": "The first nodes must find each other like ships in fog - by calling out"
     }
   ],
+  "philosophy": "Bootstrap nodes are a point of failure. True P2P has no special nodes.",
   "network_constants": {
     "trust_speed": 1.0,
     "decay_time": 86400,
