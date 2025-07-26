@@ -453,7 +453,11 @@ echo -e "${CYAN}Welcome to the infinite trust network!${NC}"
 echo ""
 
 # Easter egg
-echo "# Hidden truth: $(date +%s | sha256sum | head -c 8)" > "$DMCT_HOME/.truth"
+if command -v sha256sum >/dev/null 2>&1; then
+    echo "# Hidden truth: $(date +%s | sha256sum | head -c 8)" > "$DMCT_HOME/.truth"
+else
+    echo "# Hidden truth: $(date +%s | shasum -a 256 | head -c 8)" > "$DMCT_HOME/.truth"
+fi
 
 # Auto-start option
 read -p "Start DMCT now? (y/n) " -n 1 -r
