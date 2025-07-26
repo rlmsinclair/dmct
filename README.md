@@ -106,7 +106,7 @@ Where:
 - Multiple nodes emit the same data → constructive interference
 - Conflicting data → destructive interference
 - Truth emerges from standing wave patterns
-- No Byzantine Generals Problem - physics solves it
+- Byzantine Generals Problem solved by physics - [Learn more](BYZANTINE.md)
 
 ## 🛠️ Usage
 
@@ -230,9 +230,10 @@ wave = node.emit_superposition([option1, option2, option3])
 ## 📖 Documentation
 
 - [Protocol Specification](PROTOCOL.md)
-- [API Reference](docs/API.md)
-- [Trust Physics](docs/PHYSICS.md)
+- [Byzantine Generals Solution](BYZANTINE.md)
+- [Ghost Mode Guide](GHOST_CHAT.md)
 - [Attack Analysis](attack_demo.py)
+- [VM Testing](VM_TESTING.md)
 
 ## 🙏 Acknowledgments
 
