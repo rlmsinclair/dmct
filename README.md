@@ -21,12 +21,12 @@ DMCT reimagines trust as a fundamental force of nature. Instead of certificates,
 
 ### One-Line Install
 ```bash
-curl -L https://raw.githubusercontent.com/[your-username]/dmct/main/install.sh | sh
+curl -L https://raw.githubusercontent.com/rlmsinclair/dmct/main/install.sh | sh
 ```
 
 ### Manual Install
 ```bash
-git clone https://github.com/[your-username]/dmct
+git clone https://github.com/rlmsinclair/dmct
 cd dmct
 python3 dmct.py  # No dependencies needed!
 ```
