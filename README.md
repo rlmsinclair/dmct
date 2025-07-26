@@ -19,9 +19,9 @@ DMCT reimagines trust as a fundamental force of nature. Instead of certificates,
 
 ## 🚀 Quick Start
 
-### One-Line Install
+### One-Line Deploy (Become Genesis)
 ```bash
-curl -L https://raw.githubusercontent.com/rlmsinclair/dmct/main/install.sh | sh
+curl -sL https://raw.githubusercontent.com/rlmsinclair/dmct/main/install.sh | sh && ~/.dmct/dmct start
 ```
 
 ### Manual Install
