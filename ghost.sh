@@ -62,10 +62,11 @@ if [ -f "$HIDDEN_SERVICE/hostname" ]; then
     # Generate beacon
     BEACON=$(python3 -c "
 import hashlib, time, random
+onion = '$ONION_ADDRESS'
 freq = random.random()
 ts = int(time.time())
-hash = hashlib.sha256(f'$ONION_ADDRESS{ts}'.encode()).hexdigest()[:8]
-print(f'DMCT:{ONION_ADDRESS}:{freq:.6f}:{ts}:{hash}')
+hash = hashlib.sha256(f'{onion}{ts}'.encode()).hexdigest()[:8]
+print(f'DMCT:{onion}:{freq:.6f}:{ts}:{hash}')
 ")
     
     echo -e "${CYAN}📡 Your discovery beacon:${NC}"
@@ -74,9 +75,10 @@ print(f'DMCT:{ONION_ADDRESS}:{freq:.6f}:{ts}:{hash}')
     echo -e "${PURPLE}Share this beacon securely to connect with others${NC}"
     echo -e "${CYAN}Remember: No logs, no traces, just trust waves${NC}\n"
     
-    # Run purist node through Tor
-    echo -e "${CYAN}🌊 Starting DMCT in ghost mode...${NC}\n"
-    TORSOCKS_CONF_FILE="$TOR_DIR/torrc" torify python3 "$HOME/dmct/purist_node.py"
+    # Run ghost chat through Tor
+    echo -e "${CYAN}🌊 Starting Ghost Chat...${NC}\n"
+    cd "$HOME/dmct"
+    torify python3 ghost_chat_pure.py
     
 else
     echo -e "${RED}❌ Failed to create hidden service${NC}"

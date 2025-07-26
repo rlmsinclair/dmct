@@ -39,9 +39,30 @@ python3 -m http.server 8888
 # Open http://localhost:8888
 ```
 
-## 🌑 Tor Integration (Privacy-First)
+### 🐳 Run Anywhere with Docker (Works on ANY OS)
+```bash
+# One line - no installation required (COPY AS ONE LINE)
+docker run -it --rm ubuntu:22.04 bash -c "apt-get update -qq && apt-get install -y -qq curl python3 tor torsocks >/dev/null 2>&1 && curl -sL https://raw.githubusercontent.com/rlmsinclair/dmct/main/install.sh | sh && ~/.dmct/ghost.sh"
+```
 
-### Running through Tor
+## 🌑 Ghost Mode (Anonymous Trust)
+
+### Quick Start Ghost Chat
+```bash
+# If DMCT is installed:
+~/.dmct/ghost.sh
+
+# From anywhere (installs everything):
+curl -sL https://raw.githubusercontent.com/rlmsinclair/dmct/main/ghost-anywhere.sh | bash
+```
+
+### Features
+- 🧅 Automatic .onion address generation
+- 💬 Peer-to-peer encrypted messaging through Tor
+- 🔐 No servers, no logs, no traces
+- ⚡ Pure Python SOCKS5 implementation
+
+### Manual Tor Setup
 ```bash
 # Install Tor first
 sudo apt-get install tor  # Debian/Ubuntu

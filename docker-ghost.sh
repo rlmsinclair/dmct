@@ -1,0 +1,2 @@
+#!/bin/bash
+docker run -it --name dmct-ghost --rm ubuntu:22.04 bash -c "apt-get update -qq && apt-get install -y -qq curl python3 tor torsocks >/dev/null 2>&1 && curl -sL https://raw.githubusercontent.com/rlmsinclair/dmct/main/install.sh | sh && ~/.dmct/ghost.sh"
