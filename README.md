@@ -260,3 +260,7 @@ DMCT is released under the **Cosmic Commons** - free as in freedom, infinite as 
 ✨ ∞ 🌊
 
 **[Start your journey into infinite trust →](https://dmct.space)**
+
+For Sam, the love of my life
+
+- Robbie
