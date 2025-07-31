@@ -1,4 +1,4 @@
-# DMCT - Decentralized Mutual Cascading Trust
+# DMCT - Decentralised Mutual Cascading Trust
 
 > *"Like ripples in spacetime, trust propagates through consciousness itself."*
 
